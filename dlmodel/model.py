@@ -19,7 +19,7 @@ print(addition)
 learning_rate = 0.001
 training_epochs = 10
 
-number_of_inputs = 9
+number_of_inputs = 8
 number_of_outputs = 1
 
 layer_1_nodes = 10
