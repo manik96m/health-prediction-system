@@ -37,7 +37,6 @@ loss, acc = model.evaluate(X_testing, Y_testing, verbose=0)
 print('Test Accuracy: %.3f, loss: %.3f' % (acc, loss))
 # Test Accuracy: 0.792, loss: 0.463
 
-print(X_testing[1])
-# print(len(X_testing[:1]), Y_testing[:10])
-print(model.predict(X_testing[:10]))
 print(Y_testing[:10])
+print(model.predict(X_testing[:10]))
+
