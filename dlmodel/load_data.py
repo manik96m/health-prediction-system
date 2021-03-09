@@ -7,7 +7,7 @@ def load_data(scaled=False):
 
     df = shuffle(pd.read_csv(datafile ,dtype=float))
 
-    training_data = df.sample(frac=0.8)
+    training_data = df.sample(frac=0.9)
     X_training = training_data.drop('Outcome', axis=1).values
     Y_training = training_data[['Outcome']].values
 
