@@ -29,8 +29,10 @@ def build_model(hp):
     return model
 
 tuner = RandomSearch(build_model, objective="val_accuracy", max_trials=2, executions_per_trial=2, directory=LOG_DIR)
-tuner.search(X_training, Y_training, epochs=4, validation_data=(X_testing, Y_testing))
+tuner.search(X_training, Y_training, epochs=20, validation_data=(X_testing, Y_testing))
 
 models = tuner.get_best_models(num_models=2)
 # print(tuner.results_summary())
 print(models[0].predict(X_testing[:10]))
+models[0].save('trained_model.h5')
+print(Y_testing[:10])
