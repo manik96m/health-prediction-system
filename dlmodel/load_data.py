@@ -2,18 +2,21 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.utils import shuffle
 import pandas as pd
 
-def load_data():
-    datafile = "./datasets/diabetes_1.csv"
+def load_data(scaled=False):
+    datafile = "../diabetes.csv"
 
     df = shuffle(pd.read_csv(datafile ,dtype=float))
 
-    training_data = df.sample(frac=0.8)
+    training_data = df.sample(frac=0.9)
     X_training = training_data.drop('Outcome', axis=1).values
     Y_training = training_data[['Outcome']].values
 
     testing_data = df.drop(training_data.index)
     X_testing = testing_data.drop('Outcome', axis=1).values
     Y_testing = testing_data[['Outcome']].values
+
+    if not scaled:
+        return (X_training, Y_training), (X_testing, Y_testing)
 
     print(len(df.index))
     print(len(training_data.index))
