@@ -1,5 +1,7 @@
 MongoDB in Python
 
+
+pip install pandas
 pip install pymongo
 
 pip install dnspython
