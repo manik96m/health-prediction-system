@@ -35,3 +35,4 @@
 *.idea
 *__pycache__/
 *logs*/
+reset.bat

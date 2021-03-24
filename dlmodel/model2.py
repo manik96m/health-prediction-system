@@ -10,7 +10,7 @@ from kerastuner.engine.hyperparameters import HyperParameters
 # Turn off TensorFlow warning messages in program output
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-LOG_DIR = f"{datetime.datetime.now().timestamp()}"
+LOG_DIR = f"tuner_logs/{datetime.datetime.now().timestamp()}"
 
 (X_training, Y_training), (X_testing, Y_testing) = load_data(True)
 
