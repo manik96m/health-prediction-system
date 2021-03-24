@@ -33,11 +33,11 @@ def load_data(scaled=False):
     Y_scaled_testing = Y_scaler.transform(Y_testing)
     # print(X_scaled_training)
 
-    xs = 'x_scaler.pkl'
-    ys = 'y_scaler.pkl'
+    xs = 'tmp/x_scaler.pkl'
+    ys = 'tmp/y_scaler.pkl'
     pickle.dump(X_scaler, xs)
     pickle.dump(Y_scaler, ys)
 
-    return (X_scaled_training,Y_scaled_training), (X_scaled_testing, Y_scaled_testing), (xs, ys)
+    return (X_scaled_training,Y_scaled_training), (X_scaled_testing, Y_scaled_testing)
 
 
