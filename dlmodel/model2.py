@@ -34,5 +34,5 @@ tuner.search(X_training, Y_training, epochs=20, validation_data=(X_testing, Y_te
 models = tuner.get_best_models(num_models=2)
 # print(tuner.results_summary())
 print(models[0].predict(X_testing[:10]))
-models[0].save('trained_model.h5')
+models[0].save('mymodel_'+str(datetime.datetime.now()).replace("-", "").replace(" ", "").replace(":","").replace(".",""))
 print(Y_testing[:10])

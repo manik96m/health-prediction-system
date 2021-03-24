@@ -36,3 +36,4 @@
 *__pycache__/
 *logs*/
 reset.bat
+tuner_logs/
