@@ -1,6 +1,7 @@
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.utils import shuffle
 import pandas as pd
+import pickle
 
 def load_data(scaled=False):
     datafile = "../diabetes.csv"
@@ -16,7 +17,7 @@ def load_data(scaled=False):
     Y_testing = testing_data[['Outcome']].values
 
     if not scaled:
-        return (X_training, Y_training), (X_testing, Y_testing)
+        return (X_training, Y_training), (X_testing, Y_testing), None
 
     print(len(df.index))
     print(len(training_data.index))
@@ -31,6 +32,12 @@ def load_data(scaled=False):
     X_scaled_testing = X_scaler.transform(X_testing)
     Y_scaled_testing = Y_scaler.transform(Y_testing)
     # print(X_scaled_training)
-    return (X_scaled_training,Y_scaled_training), (X_scaled_testing, Y_scaled_testing)
+
+    xs = 'x_scaler.pkl'
+    ys = 'y_scaler.pkl'
+    pickle.dump(X_scaler, xs)
+    pickle.dump(Y_scaler, ys)
+
+    return (X_scaled_training,Y_scaled_training), (X_scaled_testing, Y_scaled_testing), (xs, ys)
 
 
