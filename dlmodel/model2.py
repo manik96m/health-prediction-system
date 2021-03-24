@@ -20,7 +20,7 @@ def build_model(hp):
                      input_shape=X_training.shape[1:]))
     for i in range(hp.Int("num_layers", min_value=1, max_value=6, step=2)):
         model.add(Dense(hp.Int(f"units_{i}", min_value=12, max_value=24, step=4), activation=keras.activations.relu))
-    model.add(Dropout(0.1))
+    # model.add(Dropout(hp.Choice("learning_rate", values=[0.1, 0.2])))
     model.add(Dense(1, activation=keras.activations.sigmoid))
 
     model.compile(
@@ -30,7 +30,7 @@ def build_model(hp):
     return model
 
 tuner = RandomSearch(build_model, objective="val_accuracy", max_trials=4, executions_per_trial=2, directory=LOG_DIR)
-tuner.search(X_training, Y_training, epochs=30, validation_data=(X_testing, Y_testing))
+tuner.search(X_training, Y_training, epochs=20, validation_data=(X_testing, Y_testing))
 
 models = tuner.get_best_models(num_models=2)
 # print(tuner.results_summary())
