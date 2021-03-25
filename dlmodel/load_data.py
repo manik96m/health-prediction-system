@@ -41,15 +41,6 @@ class LoadData:
 
         return X_scaled, Y_scaled
 
-def load_data_from_mongodb():
-    mng_client = pymongo.MongoClient(
-        "mongodb+srv://admin:admin@cluster0.vwurs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-    db = mng_client.diabetes_data
-    res = db.Diabetes_US.find()
-    print(res)
-    return res
-
-
 def import_content(filepath):
     # reading CSV and checking for null values
     cdir = os.path.dirname(__file__)
