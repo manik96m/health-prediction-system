@@ -56,7 +56,7 @@ def main(instance):
     # project = 'My Project first'
     model = 'health_priddiction_system'
     version = 'v1'
-    predict_json(project, model, scaled_data, version)
+    predict_json(project, model, scaled_data)
 
 
 if __name__ == "__main__":
