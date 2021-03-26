@@ -19,7 +19,7 @@ import googleapiclient.discovery    # google-api-python-client
 
 # 6,148,72,35,0,33.6,0.627,50
 def predict_json(project, model, instances, version=None):
-    endpoint = 'us-central1-ml.googleapis.com'
+    endpoint = 'https://us-central1-ml.googleapis.com'
     client_options = ClientOptions(api_endpoint=endpoint)
     service = googleapiclient.discovery.build('ml', 'v1', client_options=client_options)
     name = 'projects/{}/models/{}'.format(project, model)
