@@ -30,7 +30,6 @@ def predict_json(project, model, instances, version=None):
     print(instances)
     response = service.projects().predict(
         name=name,
-        region="us-central1",
         body={'instances': instances}
     ).execute()
 
