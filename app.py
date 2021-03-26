@@ -1,6 +1,7 @@
 
 import os, sys
 import pickle
+from google.api_core.client_options import ClientOptions
 import googleapiclient.discovery    # google-api-python-client
 # from google.colab import auth
 
@@ -18,7 +19,9 @@ import googleapiclient.discovery    # google-api-python-client
 
 # 6,148,72,35,0,33.6,0.627,50
 def predict_json(project, model, instances, version=None):
-    service = googleapiclient.discovery.build('ml', 'v1')
+    endpoint = 'us-central1-ml.googleapis.com'
+    client_options = ClientOptions(api_endpoint=endpoint)
+    service = googleapiclient.discovery.build('ml', 'v1', client_options=client_options)
     name = 'projects/{}/models/{}'.format(project, model)
 
     if version is not None:
@@ -27,6 +30,7 @@ def predict_json(project, model, instances, version=None):
     print(instances)
     response = service.projects().predict(
         name=name,
+        region="us-central1",
         body={'instances': instances}
     ).execute()
 
