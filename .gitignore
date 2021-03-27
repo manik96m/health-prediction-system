@@ -35,3 +35,6 @@
 *.idea
 *__pycache__/
 *logs*/
+reset.bat
+tuner_logs/
+mymodel_*/
