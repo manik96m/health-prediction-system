@@ -5,18 +5,6 @@ from google.api_core.client_options import ClientOptions
 import googleapiclient.discovery    # google-api-python-client
 # from google.colab import auth
 
-# def explicit():
-#     from google.cloud import storage
-#
-#     # Explicitly use service account credentials by specifying the private key
-#     # file.
-#     storage_client = storage.Client.from_service_account_json(
-#         'service_account.json')
-#
-#     # Make an authenticated API request
-#     buckets = list(storage_client.list_buckets())
-#     print(buckets)
-
 # 6,148,72,35,0,33.6,0.627,50
 def predict_json(project, model, instances, version=None):
     endpoint = 'https://us-central1-ml.googleapis.com'
@@ -61,6 +49,9 @@ def main(instance):
 
 
 if __name__ == "__main__":
-    instance_str = sys.argv[1]
-    instance = [float(s) for s in instance_str.split(",")]
-    main(instance)
+    if len(sys.argv) < 2:
+        print("usage example\n{}".format('python app.py "0,137,40,35,168,43.1,2.288,33"'))
+    else:
+        instance_str = sys.argv[1]
+        instance = [float(s) for s in instance_str.split(",")]
+        main(instance)
