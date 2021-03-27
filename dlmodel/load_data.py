@@ -38,7 +38,7 @@ class LoadData:
 
         return X_scaled, Y_scaled
 
-def load_data(scaled=True):
+def load_data(scale=True):
     datafile = "../diabetes.csv"
 
     df = shuffle(pd.read_csv(datafile ,dtype=float))
@@ -51,7 +51,7 @@ def load_data(scaled=True):
     X_testing = testing_data.drop('Outcome', axis=1).values
     Y_testing = testing_data[['Outcome']].values
 
-    if not scaled:
+    if not True:
         return (X_training, Y_training), (X_testing, Y_testing)
 
     print(len(df.index))
@@ -79,7 +79,6 @@ def load_data(scaled=True):
 
 if __name__ == '__main__':
     # import_content('../diabetes.csv')
-    cursor = load_data()
-    for x in cursor:
-        print(x)
+    load_data()
+
 

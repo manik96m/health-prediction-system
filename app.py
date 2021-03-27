@@ -39,24 +39,21 @@ def predict_json(project, model, instances, version=None):
     return response['predictions']
 
 def main(instance):
-    # xs = 'dlmodel/pickles/x_scaler.pkl'
-    # ys = 'dlmodel/pickles/y_scaler.pkl'
-    # with open(xs, 'rb') as pickle_file:
-    #     X_scaler = pickle.load(pickle_file)
-    # with open(ys, 'rb') as pickle_file:
-    #     Y_scaler = pickle.load(pickle_file)
-    #
-    # # auth.authenticate_user()
-    #
-    # scaled_data = X_scaler.transform([instance]).tolist()
+    xs = 'dlmodel/pickles/x_scaler.pkl'
+    ys = 'dlmodel/pickles/y_scaler.pkl'
+    with open(xs, 'rb') as pickle_file:
+        X_scaler = pickle.load(pickle_file)
+    with open(ys, 'rb') as pickle_file:
+        Y_scaler = pickle.load(pickle_file)
 
-    scaled_data = [[0.3529411764705882, 0.7437185929648241, 0.5901639344262295, 0.3535353535353536, 0.0, 0.5007451564828614,0.23441502988898377, 0.4833333333333334]]
+    scaled_data = X_scaler.transform([instance]).tolist()
+
+    # scaled_data = [[0.3529411764705882, 0.7437185929648241, 0.5901639344262295, 0.3535353535353536, 0.0, 0.5007451564828614,0.23441502988898377, 0.4833333333333334]]
 
     # print(instance)
     # print(scaled_data)
 
     project = 'my-project-first-296702'
-    # project = 'My Project first'
     model = 'health_priddiction_system'
     version = 'v1'
     res = predict_json(project, model, scaled_data)
