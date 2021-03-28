@@ -15,7 +15,7 @@ def predict_json(project, model, instances, version=None):
     if version is not None:
         name += '/versions/{}'.format(version)
 
-    print(instances)
+    # print(instances)
     response = service.projects().predict(
         name=name,
         body={'instances': instances}
